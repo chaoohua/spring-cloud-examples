@@ -1,5 +1,6 @@
 package com.neo.filter;
 
+import com.neo.utils.AppIdMapper;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.apache.commons.lang.StringUtils;
@@ -7,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
+import java.rmi.ServerException;
 
 public class TokenFilter extends ZuulFilter {
 
@@ -35,6 +37,7 @@ public class TokenFilter extends ZuulFilter {
         logger.info("--->>> TokenFilter {},{}", request.getMethod(), request.getRequestURL().toString());
 
         String token = request.getParameter("token");// 获取请求的参数
+        logger.info("--->>> TokenFilter {}", token);
 
         if (StringUtils.isNotBlank(token)) {
             ctx.setSendZuulResponse(true); //对请求进行路由
@@ -49,5 +52,4 @@ public class TokenFilter extends ZuulFilter {
             return null;
         }
     }
-
 }

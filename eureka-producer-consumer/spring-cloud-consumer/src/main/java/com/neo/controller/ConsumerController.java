@@ -17,4 +17,9 @@ public class ConsumerController {
         return HelloRemote.hello(name);
     }
 
+    @RequestMapping("/user/{name}")
+    public String getUserinfo(@PathVariable("name") String name) {
+        return HelloRemote.getUserInfo(name);
+    }
+
 }

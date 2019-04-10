@@ -14,6 +14,8 @@ public interface HelloRemote {
 
     @RequestMapping(value = "/hello")
     public String hello(@RequestParam(value = "name") String name);
+    @RequestMapping(value = "/user")
+    public String getUserInfo(@RequestParam(value = "name") String name);
 
 
 }
